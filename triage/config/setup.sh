@@ -14,6 +14,11 @@ sudo apt-get install -y\
 	libssl-dev\
 	libffi-dev\
 	wget\
+	g++-multilib\
+	doxygen\
+	transfig\
+	imagemagick\
+	ghostscript\
 
 # Install GEF
 git clone https://github.com/hugsy/gef.git $CODE_DIR/gef
@@ -23,6 +28,18 @@ echo "source $CODE_DIR/gef/gef.py" >> $HOME/.gdbinit
 git clone https://github.com/jfoote/exploitable.git $CODE_DIR/exploitable
 git clone https://github.com/Ayrx/atriage.git $CODE_DIR/atriage
 pip3 install -e $CODE_DIR/atriage
+
+# Install Frida
+pip3 install frida frida-tools
+
+# Install DynamoRIO
+git clone https://github.com/DynamoRIO/dynamorio.git $CODE_DIR/dynamorio
+pushd $CODE_DIR/dynamorio
+mkdir build && pushd build
+cmake ..
+make
+popd
+popd
 
 # Install LIEF and reutils
 pip3 install https://github.com/lief-project/LIEF/releases/download/0.9.0/pylief-0.9.0.zip

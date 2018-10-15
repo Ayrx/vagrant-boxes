@@ -33,12 +33,10 @@ pip3 install -e $CODE_DIR/atriage
 pip3 install frida frida-tools
 
 # Install DynamoRIO
-git clone https://github.com/DynamoRIO/dynamorio.git $CODE_DIR/dynamorio
-pushd $CODE_DIR/dynamorio
-mkdir build && pushd build
-cmake ..
-make
-popd
+pushd $CODE_DIR
+wget --quiet https://github.com/DynamoRIO/dynamorio/releases/download/release_7_0_0_rc1/DynamoRIO-Linux-7.0.0-RC1.tar.gz
+tar xf DynamoRIO-Linux-7.0.0-RC1.tar.gz
+mv DynamoRIO-Linux-7.0.0-RC1 dynamorio
 popd
 
 # Install LIEF and reutils

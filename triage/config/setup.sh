@@ -19,6 +19,15 @@ sudo apt-get install -y\
 	transfig\
 	imagemagick\
 	ghostscript\
+	neovim\
+
+# Install dotfiles
+pip3 install neovim
+git clone https://github.com/Ayrx/dotfiles.git $CODE_DIR/dotfiles
+pushd $CODE_DIR/dotfiles
+./install.sh
+nvim +'PlugInstall --sync' +qall &> /dev/null
+popd
 
 # Install GEF
 git clone https://github.com/hugsy/gef.git $CODE_DIR/gef
